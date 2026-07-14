@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Mizanur Rahman — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b2d;
+    --deep: #162236;
+    --accent: #c9a84c;
+    --accent2: #e8c97a;
+    --light: #f5f0e8;
+    --muted: #8a9bb0;
+    --white: #ffffff;
+    --card: #1a2840;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--navy) 0%, #1c3154 60%, #0f1b2d 100%);
+    padding: 80px 40px 60px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .photo-wrap {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .photo-wrap img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    display: block;
+    filter: grayscale(20%);
+    border: 3px solid rgba(201,168,76,0.3);
+  }
+
+  .photo-wrap::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    opacity: 0.4;
+  }
+
+  .hero-info { flex: 1; }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 6px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    color: var(--light);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-pill:hover {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--accent);
+    color: var(--accent2);
+  }
+
+  .contact-pill svg { opacity: 0.7; }
+
+  /* LAYOUT */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .left { padding-right: 40px; }
+  .right { border-left: 1px solid rgba(255,255,255,0.07); padding-left: 32px; }
+
+  /* SECTION */
+  .section { margin-bottom: 48px; animation: fadeUp 0.7s ease both; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .section-label span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,168,76,0.5), transparent);
+  }
+
+  .section-num {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  /* OBJECTIVE */
+  .objective-text {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #b8c8dd;
+    border-left: 3px solid var(--accent);
+    padding-left: 18px;
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), transparent);
+  }
+
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .exp-company {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .exp-period {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .responsibilities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .resp-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+    color: #b8c8dd;
+  }
+
+  .resp-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .edu-badge {
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  .edu-degree {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .edu-inst {
+    font-size: 0.83rem;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .edu-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .edu-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* SIDEBAR */
+  .sidebar-section { margin-bottom: 36px; }
+
+  .sidebar-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  /* SKILLS */
+  .skill-item {
+    margin-bottom: 12px;
+  }
+
+  .skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.83rem;
+    color: #b8c8dd;
+    margin-bottom: 5px;
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    animation: barGrow 1.2s ease both;
+    transform-origin: left;
+  }
+
+  /* PERSONAL INFO */
+  .info-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+  }
+
+  .info-key {
+    color: var(--muted);
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .info-val {
+    color: var(--light);
+    font-weight: 500;
+  }
+
+  /* LANGUAGE */
+  .lang-item {
+    margin-bottom: 14px;
+  }
+
+  .lang-name {
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .lang-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .dot.filled {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* TRAITS */
+  .trait-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    color: #b8c8dd;
+    margin: 3px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; padding: 40px 20px; gap: 24px; }
+    .main { grid-template-columns: 1fr; }
+    .left { padding-right: 0; }
+    .right { border-left: none; border-top: 1px solid rgba(255,255,255,0.07); padding-left: 0; padding-top: 32px; }
+    .responsibilities { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="photo-wrap">
+    <img src="1778940043116_image.jpe" alt="Md. Mizanur Rahman" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-info">
+    <p class="hero-title">Support Engineer &amp; QA Professional</p>
+    <h1 class="hero-name">Md. Mizanur<br>Rahman</h1>
+    <div class="contacts">
+      <a class="contact-pill" href="tel:01843802036">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.64 3.48 2 2 0 013.62 1.32h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9a16 16 0 006.09 6.09l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        01843802036
+      </a>
+      <a class="contact-pill" href="mailto:mizan802036@gmail.com">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        mizan802036@gmail.com
+      </a>
+      <span class="contact-pill">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        North Adabor, Dhaka-1207
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- LEFT COLUMN -->
+  <div class="left">
+
+    <!-- Career Objective -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-num">01</span>
+        <span>Career Objective</span>
+      </div>
+      <p class="objective-text">
+        Working in a challenging environment heading towards being an adept professional executive, fitting for the dynamic corporate world and proving capability based on realistic experience gathered from versatile roles in software support and quality assurance.
+      </p>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-num">02</span>
+        <span>Work Experience</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">Assistant Support Engineer</div>
+        <div class="exp-company">Computer Network Systems — CNS Limited</div>
+        <div class="exp-period">DEC 2021 — PRESENT</div>
+        <div class="responsibilities">
+          <div class="resp-item">Software Testing (Manual)</div>
+          <div class="resp-item">Issue Identification</div>
+          <div class="resp-item">Support Management</div>
+          <div class="resp-item">Customer Service</div>
+          <div class="resp-item">Documentation</div>
+          <div class="resp-item">Support Services Management</div>
+          <div class="resp-item">Customer Support</div>
+          <div class="resp-item">Customer Service Management</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-num">03</span>
+        <span>Educational Record</span>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-badge">BSc</div>
+        <div>
+          <div class="edu-degree">Bachelor of Science — Computer Science &amp; Engineering</div>
+          <div class="edu-inst">World University of Bangladesh</div>
+          <div class="edu-meta">
+            <span>📅 2020</span>
+            <span>⭐ CGPA 3.19</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-badge">Dip</div>
+        <div>
+          <div class="edu-degree">Diploma in Engineering — Computer Technology</div>
+          <div class="edu-inst">Cumilla Polytechnic Institute</div>
+          <div class="edu-meta">
+            <span>📅 2016</span>
+            <span>⭐ CGPA 3.18</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-badge">SSC</div>
+        <div>
+          <div class="edu-degree">Secondary School Certificate — Science</div>
+          <div class="edu-inst">A. Malek Institution</div>
+          <div class="edu-meta">
+            <span>📅 2011</span>
+            <span>⭐ GPA 4.88</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Self Traits -->
+    <div class="section">
+      <div class="section-label">
+        <span class="section-num">04</span>
+        <span>Self Traits</span>
+      </div>
+      <div>
+        <span class="trait-tag">Self-Initiation</span>
+        <span class="trait-tag">Strong Motivation</span>
+        <span class="trait-tag">Team Player</span>
+        <span class="trait-tag">Works Independently</span>
+        <span class="trait-tag">Communication Skills</span>
+        <span class="trait-tag">Presentation Skills</span>
+        <span class="trait-tag">Works Under Pressure</span>
+        <span class="trait-tag">Long-hour Endurance</span>
+      </div>
+    </div>
+
+  </div><!-- /left -->
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="right">
+
+    <!-- Skills -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Technical Skills</div>
+
+      <div class="skill-item">
+        <div class="skill-name"><span>Manual Testing</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Software Testing</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Bug Finding</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Software Implementation</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Requirement Analysis</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Customer Support</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+
+    <!-- Language -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Languages</div>
+      <div class="lang-item">
+        <div class="lang-name">Bengali</div>
+        <div class="lang-dots">
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">English</div>
+        <div class="lang-dots">
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+          <div class="dot filled"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Info -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Personal Info</div>
+      <div class="info-row"><span class="info-key">Date of Birth</span><span class="info-val">01 Jan 1996</span></div>
+      <div class="info-row"><span class="info-key">Religion</span><span class="info-val">Islam</span></div>
+      <div class="info-row"><span class="info-key">Nationality</span><span class="info-val">Bangladeshi</span></div>
+      <div class="info-row"><span class="info-key">Blood Group</span><span class="info-val">B+</span></div>
+      <div class="info-row"><span class="info-key">Father</span><span class="info-val">Saleh Uddin</span></div>
+      <div class="info-row"><span class="info-key">Mother</span><span class="info-val">Rowshan Akter</span></div>
+    </div>
+
+    <!-- Address -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Address</div>
+      <div class="info-row" style="flex-direction:column; gap:4px;">
+        <span class="info-key">Present</span>
+        <span class="info-val" style="font-size:0.81rem;">North Adabor, Mohammadpur, Dhaka-1207</span>
+      </div>
+      <div class="info-row" style="flex-direction:column; gap:4px; margin-top:8px;">
+        <span class="info-key">Permanent</span>
+        <span class="info-val" style="font-size:0.81rem;">Goyespur, Pak-Munshirhat-1308, Begumgong, Noakhali</span>
+      </div>
+    </div>
+
+  </div><!-- /right -->
+
+</div><!-- /main -->
+
+<footer>
+  &copy; 2026 Md. Mizanur Rahman &nbsp;·&nbsp; All Rights Reserved
+</footer>
+
+</body>
+</html>
